@@ -100,20 +100,6 @@ For reference, a Terraform-based two-tier architecture is documented here:
 └── README.md            # Project documentation
 ```
 
-
-
-## 📁 Terraform Project Structure ( For - Creating 3 instances infracture )
-
-- Terraform is used only for infrastructure provisioning (optional reference).<br>
-  Ansible is the core focus of this project.
-
-- I have launched the instances via the AWS Management Console. 
-- For best practices, Terraform should be used to provision and manage the infrastructure.
-
->If you want a basic understanding, I have created documentation—please check it out For reference. <br>
-👉 [click here](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform)
-
-
 ---
 
 ## 📋 Inventory File (inventory.ini)
