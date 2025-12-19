@@ -76,6 +76,74 @@ Database Server (MariaDB)
 172.31.42.122 ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/server1.pem
 ```
 
+## 📋 2-tier-arc.yml file
+
+```
+
+# deployment of 2-tier app using single ansible script
+---
+# appserver
+- name: installation of appserver
+  hosts: app-server
+  become: yes
+  vars:
+   packages:
+    - nginx
+    - php
+    - php-fpm
+   services:
+    - nginx
+    - php-fpm
+   web_file_path: /usr/share/nginx/html/index.php
+  tasks:
+  # install nginx, php
+  - name: install nginx, php, php-fpm
+    ansible.builtin.dnf:
+      name: "{{packages}}"
+      state: present
+  # start and enable nginx, php
+  - name: start and enable nginx, php-fpm
+    ansible.builtin.systemd_service:
+      name: "{{item}}"
+      state: started
+      enabled: true
+    loop: "{{services}}"
+  # deployment of php page
+  - name: deploy php on nginx
+    ansible.builtin.copy:
+      dest: "{{web_file_path}}"
+      content: |
+       <?php
+       phpinfo();
+       ?>
+#dbserver
+- name: installation on dbserver
+  hosts: db-server
+  become: yes
+  vars:
+   db_pkg: mariadb105-server
+   db_service: mariadb
+   db_name: FCT
+  tasks:
+  # install mariadb
+  - name: install mariadb
+    ansible.builtin.dnf:
+      name: "{{db_pkg}}"
+      state: present
+  # start mariadb
+  - name: start and enable maraidb
+    ansible.builtin.systemd_service:
+      name: "{{db_service}}"
+      state: started
+      enabled: true
+  # create databse
+  - name: create a  mysql database
+    ansible.builtin.shell: |
+      mysql -u root -e "CREATE DATABASE IF NOT EXISTS {{ db_name }};"
+     
+
+
+```
 ---
 
 ## ⚙️ Ansible Playbook Explanation
