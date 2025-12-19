@@ -1,19 +1,25 @@
 # Two-Tier Architecture using Ansible
 
 ## 📌 Overview
-This project implements a **Two-Tier Architecture** using **Ansible automation**.
-It demonstrates how to configure and deploy **application and database servers** using a **single Ansible playbook**.
+This project demonstrates the implementation of a **Two-Tier Architecture** using **Ansible automation**.
 
-The project is beginner-friendly and interview-oriented, focusing on:
-- Multi-host automation
-- Inventory management
-- Service deployment
-- Real-world 2-tier architecture concept
+It focuses on configuring and deploying **application and database servers** using a **single Ansible playbook**, following real-world DevOps practices.  
+The project is beginner-friendly and suitable for interview preparation.
 
-Ansible enables **agentless automation**, meaning:
-- No software required on target servers
-- Uses SSH for communication
-- Simple YAML-based configuration
+Key objectives of this project:
+- Automate multi-host server configuration
+- Use Ansible inventory for host management
+- Deploy application and database services
+- Understand real-world two-tier architecture
+
+Ansible uses an **agentless architecture**, which means:
+- No software installation is required on target servers
+- Communication happens over SSH
+- Infrastructure configuration is written in simple YAML files
+  
+ <p align="center">
+  <img src="" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 ---
 
@@ -33,12 +39,19 @@ A Two-Tier Architecture divides an application into **two layers**:
 - Stores application data
 - Runs MariaDB
 - Isolated from the application logic
-
+  
 This separation provides:
 - 🔐 Better security
 - ⚙ Easier management
 - 📈 Scalability for future upgrades
 
+
+### ✅ Benefits
+- Improved security
+- Better separation of concerns
+- Easier management
+- Scalable for future enhancements
+  
 ---
 
 ## 🏛 Architecture Flow
@@ -55,18 +68,57 @@ Database Server (MariaDB)
 
 ---
 
-## 📁 Project Structure
+## 📁 Infrastructure Provisioning (Terraform – Reference) ( Optional )
+
+The EC2 instances used in this project were created via the **AWS Management Console**.  
+However, for **best practices**, infrastructure should be provisioned using **Terraform**.
+
+For reference, a Terraform-based two-tier architecture is documented here:  
+👉 https://github.com/nikiimisal/Project-2-tier-arc-using_terraform
+
+### Terraform Project Structure ( For - Creating 3 instances infracture )
+
+```
+2-tier-project/
+├── main.tf        # Core infrastructure code
+├── variables.tf   # Input variables
+├── outputs.tf     # Output values
+└── README.md      # Documentation
+```
+
+> ⚠️ Note: Terraform is **not mandatory** for this project.  
+> Ansible is the **primary focus**.
+
+---
+
+## 📁 Ansible Project Structure
 
 ```
 2-tier-ansible-project/
-├── inventory.ini        # Target server IPs & SSH details
+├── inventory.ini        # Target server IPs & SSH configuration
 ├── deploy.yml           # Single Ansible playbook
 └── README.md            # Project documentation
 ```
 
+
+
+## 📁 Terraform Project Structure ( For - Creating 3 instances infracture )
+
+- Terraform is used only for infrastructure provisioning (optional reference).<br>
+  Ansible is the core focus of this project.
+
+- I have launched the instances via the AWS Management Console. 
+- For best practices, Terraform should be used to provision and manage the infrastructure.
+
+>If you want a basic understanding, I have created documentation—please check it out For reference. <br>
+👉 [click here](https://github.com/nikiimisal/Project-2-tier-arc-using_terraform)
+
+
 ---
 
 ## 📋 Inventory File (inventory.ini)
+
+The inventory file defines target hosts and SSH access details.
 
 ```
 [app-server]
@@ -85,6 +137,12 @@ Database Server (MariaDB)
 
 ## ⚙️ Ansible Playbook Explanation
 
+### 🟡 Ansible Control Server
+- Ansible is installed on the control node
+- Uses SSH to connect to target servers
+- No agent required on managed nodes
+- Executes the playbook and manages automation
+  
 ### 🟢 App Server Tasks
 - Install Nginx, PHP, PHP-FPM
 - Start & enable services
@@ -95,13 +153,36 @@ Database Server (MariaDB)
 - Start & enable database service
 - Create database automatically
 
+   <p align="center">
+  <img src="" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+
 ---
 
 ## 🚀 How to Run the Project
 
+- Upload the private key from your local machine to the Linux terminal to enable secure SSH access to remote servers.
+
+   <p align="center">
+  <img src="" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+- Create 2 files `.ini` & `.yml`
+- Then run this command's
+
 ```
-ansible-playbook -i inventory.ini deploy.yml
+ansible-playbook deploy.yml -i inventory.ini --syntax-check
 ```
+
+```
+ansible-playbook deploy.yml -i inventory.ini
+```
+
+
+| **Terminal**    | **Terminal**          |
+|--------------------------------|------------------------------------|
+| ![VS]() | ![AWS]() |
 
 ---
 
@@ -114,24 +195,35 @@ http://<app-server-public-ip>
 ```
 You should see the **PHP Info Page**.
 
+ <p align="center">
+  <img src="" width="500" alt="Initialize Repository Screenshot">
+</p>
+
 ### Database Server
 ```
 mysql -u root
 SHOW DATABASES;
 ```
+ <p align="center">
+  <img src="" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 ---
 
 ## 🎯 Key Ansible Concepts Used
-- Inventory & host groups
+- Inventory and host groups
 - Variables
 - Loops
-- Modules (dnf, systemd, copy, shell)
-- Multi-play playbook
-
+- Ansible modules:
+  - dnf
+  - systemd
+  - copy
+  - shell
+- Multi-play playbook structure
+  
 ---
 
-## 🧠 Simple Interview Explanation
+## 🧠 Simple Explanation
 “This project demonstrates a two-tier architecture using Ansible where the application server and database server are configured separately using inventory groups and deployed using a single playbook.”
 
 ---
