@@ -18,7 +18,7 @@ Ansible uses an **agentless architecture**, which means:
 - Infrastructure configuration is written in simple YAML files
   
  <p align="center">
-  <img src="" width="500" alt="Initialize Repository Screenshot">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/1766051899774.jpg?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 
 ---
@@ -140,7 +140,7 @@ The inventory file defines target hosts and SSH access details.
 - Create database automatically
 
    <p align="center">
-  <img src="" width="500" alt="Initialize Repository Screenshot">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-19%20192021.png?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 
 
@@ -151,7 +151,7 @@ The inventory file defines target hosts and SSH access details.
 - Upload the private key from your local machine to the Linux terminal to enable secure SSH access to remote servers.
 
    <p align="center">
-  <img src="" width="500" alt="Initialize Repository Screenshot">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-18%20203421.png?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 
 - Create 2 files `.ini` & `.yml`
@@ -168,7 +168,7 @@ ansible-playbook deploy.yml -i inventory.ini
 
 | **Terminal**    | **Terminal**          |
 |--------------------------------|------------------------------------|
-| ![VS]() | ![AWS]() |
+| ![VS](https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-19%20191359.png?raw=true) | ![AWS](https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-19%20191512.png?raw=true) |
 
 ---
 
@@ -182,7 +182,7 @@ http://<app-server-public-ip>
 You should see the **PHP Info Page**.
 
  <p align="center">
-  <img src="" width="500" alt="Initialize Repository Screenshot">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-19%20191920.png?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 
 ### Database Server
@@ -191,7 +191,7 @@ mysql -u root
 SHOW DATABASES;
 ```
  <p align="center">
-  <img src="" width="500" alt="Initialize Repository Screenshot">
+  <img src="https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/img/Screenshot%202025-12-19%20191859.png?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 
 ---
