@@ -78,72 +78,9 @@ Database Server (MariaDB)
 
 ## 📋 2-tier-arc.yml file
 
-```
-
-# deployment of 2-tier app using single ansible script
----
-# appserver
-- name: installation of appserver
-  hosts: app-server
-  become: yes
-  vars:
-   packages:
-    - nginx
-    - php
-    - php-fpm
-   services:
-    - nginx
-    - php-fpm
-   web_file_path: /usr/share/nginx/html/index.php
-  tasks:
-  # install nginx, php
-  - name: install nginx, php, php-fpm
-    ansible.builtin.dnf:
-      name: "{{packages}}"
-      state: present
-  # start and enable nginx, php
-  - name: start and enable nginx, php-fpm
-    ansible.builtin.systemd_service:
-      name: "{{item}}"
-      state: started
-      enabled: true
-    loop: "{{services}}"
-  # deployment of php page
-  - name: deploy php on nginx
-    ansible.builtin.copy:
-      dest: "{{web_file_path}}"
-      content: |
-       <?php
-       phpinfo();
-       ?>
-#dbserver
-- name: installation on dbserver
-  hosts: db-server
-  become: yes
-  vars:
-   db_pkg: mariadb105-server
-   db_service: mariadb
-   db_name: FCT
-  tasks:
-  # install mariadb
-  - name: install mariadb
-    ansible.builtin.dnf:
-      name: "{{db_pkg}}"
-      state: present
-  # start mariadb
-  - name: start and enable maraidb
-    ansible.builtin.systemd_service:
-      name: "{{db_service}}"
-      state: started
-      enabled: true
-  # create databse
-  - name: create a  mysql database
-    ansible.builtin.shell: |
-      mysql -u root -e "CREATE DATABASE IF NOT EXISTS {{ db_name }};"
-     
+👉[Click here](https://github.com/nikiimisal/Project-2-tier-arc-using_Ansible/blob/main/2-tier-arc.yml)
 
 
-```
 ---
 
 ## ⚙️ Ansible Playbook Explanation
