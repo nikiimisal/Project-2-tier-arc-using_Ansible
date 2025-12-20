@@ -1,5 +1,8 @@
 # Two-Tier Architecture using Ansible
 
+>For the 3-tier architecture, I haven’t created separate documentation as the steps are slightly similar. All related code is available in the repository.<br>
+👉[click here](https://github.com/nikiimisal/Project-code-3-tier-arc-using_Ansible)
+
 ## 📌 Overview
 This project demonstrates the implementation of a **Two-Tier Architecture** using **Ansible automation**.
 
